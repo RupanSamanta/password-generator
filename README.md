@@ -1,16 +1,77 @@
-# React + Vite
+# Password Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React + Vite app that generates secure, customizable passwords in the browser.
 
-Currently, two official plugins are available:
+This repository is a minimal frontend project built with Vite and React. It includes a simple UI to choose password length and character sets, and produces a copyable, strong password instantly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Generate random passwords with configurable length
+- Options for lowercase, uppercase, numbers, and symbols
+- Copy password to clipboard with one click
+- Minimal, accessible UI components
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js >= 16
+- npm or yarn
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Quick start
+
+Install dependencies:
+
+```
+npm install
+```
+
+Start development server with hot reload:
+
+```
+npm run dev
+```
+
+Build for production:
+
+```
+npm run build
+```
+
+Locally preview the production build:
+
+```
+npm run preview
+```
+
+## Usage
+
+1. Open the app in the browser while the dev server is running (usually at `http://localhost:5173`).
+2. Choose the desired password length and enable/disable character categories.
+3. Click `Generate` to create a password; click the `Copy` button to copy it to the clipboard.
+
+## Project structure
+
+- `src/` — application source code
+	- `main.jsx` — app entry
+	- `App.jsx` — main app component
+	- `lib/utils.js` — password generation helper
+	- `components/ui/` — small presentational components (input, button, checkbox, etc.)
+- `public/` — static assets
+
+If you want to find the password logic, see `src/lib/utils.js`.
+
+## Development notes
+
+- Keep components small and stateless where possible.
+- Unit tests are not included by default; consider adding tests for `lib/utils.js` if you add logic.
+
+## Contributing
+
+Contributions are welcome. Open an issue or a pull request describing your change.
+
+## License
+
+This project is provided under the MIT License. See the `LICENSE` file if present.
+
+---
+
+If you'd like, I can also add a short example of the password generation algorithm or update `package.json` scripts — tell me which next step you'd prefer.
