@@ -21,7 +21,7 @@ function Display({ password }) {
             })
     }
 
-    const iconClass = "size-4 transition-all duration-200"
+    const iconClass = "transition-all animate-in duration-200 fade-in"
 
     return (
         <>
@@ -42,15 +42,15 @@ function Display({ password }) {
                 disabled={password.length === 0}
             >
                 {status === "idle" && (
-                    <CopyIcon className={`${iconClass} animate-in zoom-in-75 fade-in`} />
+                    <CopyIcon className={`${iconClass} zoom-in-75`} />
                 )}
 
                 {status === "success" && (
-                    <Check className={`${iconClass} animate-in zoom-in-50 fade-in text-green-500`} />
+                    <Check className={`${iconClass} zoom-in-50 text-green-500`} />
                 )}
 
                 {status === "error" && (
-                    <AlertCircle className={`${iconClass} animate-in zoom-in-50 fade-in text-red-500`} />
+                    <AlertCircle className={`${iconClass} zoom-in-50 text-red-500`} />
                 )}
             </Button>
         </>
