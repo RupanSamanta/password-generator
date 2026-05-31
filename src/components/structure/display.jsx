@@ -2,6 +2,7 @@ import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { CopyIcon, Check, AlertCircle } from "lucide-react"
 import { useState } from "react"
+import Feedback from "./feedback"
 
 function Display({ password }) {
     const [status, setStatus] = useState("idle")
@@ -9,14 +10,14 @@ function Display({ password }) {
     const copyToClipboard = () => {
         navigator.clipboard.writeText(password)
             .then(() => {
-                setStatus("success")
+                setStatus("success");
             })
             .catch(() => {
-                setStatus("error")
+                setStatus("error");
             })
             .finally(() => {
                 setTimeout(() => {
-                    setStatus("idle")
+                    setStatus("idle");
                 }, 1500)
             })
     }
@@ -53,6 +54,14 @@ function Display({ password }) {
                     <AlertCircle className={`${iconClass} zoom-in-50 text-red-500`} />
                 )}
             </Button>
+
+            {status === "success" && (
+                <Feedback type="default" message="Copied!" status={status} />
+            )}
+
+            {status === "error" && (
+                <Feedback type="destructive" message="Copy failed" status={status} />
+            )}
         </>
     )
 }
