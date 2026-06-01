@@ -18,7 +18,7 @@ function Display({ password }) {
             .finally(() => {
                 setTimeout(() => {
                     setStatus("idle");
-                }, 1500)
+                }, 1750)
             })
     }
 
@@ -38,9 +38,10 @@ function Display({ password }) {
                 variant="outline"
                 size="icon"
                 aria-label="Copy"
-                className="cursor-pointer"
                 onClick={copyToClipboard}
                 disabled={password.length === 0}
+                className="cursor-pointer"
+                title="Copy to Clipboard"
             >
                 {status === "idle" && (
                     <CopyIcon className={`${iconClass} zoom-in-75`} />

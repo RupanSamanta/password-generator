@@ -4,7 +4,7 @@ import { Alert, AlertTitle } from "../ui/alert"
 function Feedback({ type, message, status }) {
   return (
     <Alert variant={type} 
-           className="w-fit absolute top-1/7 left-1/2 -translate-1/2 transition-all animate-in duration-200 zoom-in-50 fade-in">
+           className="w-fit absolute top-1/7 left-1/2 -translate-1/2 grow-in-out">
         {status === "success" && (
             <CheckCircle />
         )}
