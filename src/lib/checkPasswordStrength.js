@@ -11,10 +11,10 @@ function checkPasswordStrength(password) {
     // Check the length
     if (password.length >= 8) score++;
     if (password.length >= 12) score++;
-    if (password.length >= 20) score++;
+    if (password.length >= 18) score++;
 
     // Check for containing both lowercase and uppercase letters
-    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password) || /[A-Z]/.test(password)) score++;
 
     // Check for at least one number
     if (/\d/.test(password)) score++;

@@ -14,7 +14,7 @@ function Settings({ length, setLength, checked, setChecked }) {
                         max={32} 
                         step={1} 
                         onValueChange={(v) => setLength(v[0])} 
-                        className="grow cursor-grab active:cursor-grabbing" 
+                        className="grow cursor-grab active:cursor-grabbing **:data-[slot=slider-track]:h-2 **:data-[slot=slider-thumb]:size-4" 
                 />
             </div>
             <div className="format-setting w-full flex flex-wrap justify-between gap-y-4 mt-6">
