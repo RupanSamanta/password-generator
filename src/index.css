@@ -172,31 +172,10 @@ body {
   background-color: #0a0a0a;
 }
 
-@keyframes grow-in-out {
-  0% {
-    transform: scale(0);
-  }
-
-  10%,
-  90% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0);
-  }
-}
-
-.grow-in-out {
-  animation: grow-in-out 3000ms ease-in-out both;
-  transform-origin: center;
-}
-
 #root {
   width: 1126px;
   max-width: 100%;
   margin: 0 auto;
-  text-align: center;
   min-height: 100svh;
   display: flex;
   justify-content: center;

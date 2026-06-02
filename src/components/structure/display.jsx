@@ -1,24 +1,25 @@
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
-import { CopyIcon, Check, AlertCircle } from "lucide-react"
+import { CopyIcon, Check, AlertTriangle } from "lucide-react"
+import { toast } from "sonner"
 import { useState } from "react"
-import Feedback from "./feedback"
 
-function Display({ password, setDisabledButton }) {
-    const [status, setStatus] = useState("idle")
-
+function Display({ password, disabled, setDisabledButton }) {
+    const [status, setStatus] = useState('idle');
     const copyToClipboard = () => {
         setDisabledButton(true);
         navigator.clipboard.writeText(password)
             .then(() => {
-                setStatus("success");
+                setStatus('success');
+                toast.success("Password copied to clipboard");
             })
             .catch(() => {
-                setStatus("error");
+                setStatus('error');
+                toast.error("Copy failed! Try again");
             })
             .finally(() => {
                 setTimeout(() => {
-                    setStatus("idle");
+                    setStatus('idle');
                     setDisabledButton(false);
                 }, 3000)
             })
@@ -40,8 +41,9 @@ function Display({ password, setDisabledButton }) {
                 variant="outline"
                 size="icon"
                 aria-label="Copy"
+                id="copy-button"
                 onClick={copyToClipboard}
-                disabled={password.length === 0}
+                disabled={password.length === 0 || disabled}
                 className="cursor-pointer"
                 title="Copy to Clipboard"
             >
@@ -54,17 +56,9 @@ function Display({ password, setDisabledButton }) {
                 )}
 
                 {status === "error" && (
-                    <AlertCircle className={`${iconClass} zoom-in-50 text-red-500`} />
+                    <AlertTriangle className={`${iconClass} zoom-in-50 text-red-500`} />
                 )}
             </Button>
-
-            {status === "success" && (
-                <Feedback type="default" message="Copied!" status={status} />
-            )}
-
-            {status === "error" && (
-                <Feedback type="destructive" message="Copy failed" status={status} />
-            )}
         </>
     )
 }

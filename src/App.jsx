@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader } from "./components/ui/card"
 import { generatePassword } from "./lib/generatePassword"
 import { checkPasswordStrength } from "./lib/checkPasswordStrength"
+import { Toaster } from "./components/ui/sonner"
 
 function App() {
   const [length, setLength] = useState(8);
@@ -15,27 +16,30 @@ function App() {
   const [disabledButton, setDisabledButton] = useState(false);
 
   return (
-    <Card size="sm" className="w-full max-w-sm mx-auto dark">
-      <CardHeader className="mt-2">
-        <div className="text-lg">Password Generator</div>
-      </CardHeader>
-      <CardContent className="flex justify-between gap-4 mx-2 my-3 px-0">
-        <Display password={password} setDisabledButton={setDisabledButton} />
-      </CardContent>
-      <CardContent className="settings bg-card m-2">
-        <Settings length={length} setLength={setLength} checked={checked} setChecked={setChecked} />
-      </CardContent>
-      <CardContent className="mx-2 my-3 mt-0">
-        <Strength strength={strength} />
-      </CardContent>
-      <Footer generatePassword={() => {
-        const nextPassword = generatePassword(length, ...checked);
-        setPassword(nextPassword);
-        setStrength(checkPasswordStrength(nextPassword));
-      }} 
+    <>
+      <Card size="sm" className="w-full max-w-sm mx-auto dark">
+        <CardHeader className="mt-2">
+          <div className="text-lg text-center">Password Generator</div>
+        </CardHeader>
+        <CardContent className="flex justify-between gap-4 mx-2 my-3 px-0">
+          <Display password={password} disabled={disabledButton} setDisabledButton={setDisabledButton} />
+        </CardContent>
+        <CardContent className="settings bg-card m-2">
+          <Settings length={length} setLength={setLength} checked={checked} setChecked={setChecked} />
+        </CardContent>
+        <CardContent className="mx-2 my-3 mt-0">
+          <Strength strength={strength} />
+        </CardContent>
+        <Footer generatePassword={() => {
+          const nextPassword = generatePassword(length, ...checked);
+          setPassword(nextPassword);
+          setStrength(checkPasswordStrength(nextPassword));
+        }}
           disabled={disabledButton}
-      />
-    </Card>
+        />
+      </Card>
+      <Toaster position="top-center" duration={3000} variant="outline" className="dark" />
+    </>
   )
 }
 
