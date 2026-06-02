@@ -11,7 +11,7 @@ function App() {
   const [length, setLength] = useState(8);
   const [checked, setChecked] = useState([true, true, true, true]);
   const [password, setPassword] = useState("");
-  const [strength, setStrength] = useState({});
+  const [strength, setStrength] = useState({ score: 0, label: "Empty" });
   return (
     <Card size="sm" className="w-full max-w-sm mx-auto dark">
       <CardHeader className="mt-2">
@@ -26,9 +26,10 @@ function App() {
       <CardContent className="mx-2 my-3 mt-0">
         <Strength strength={strength}/>
       </CardContent>
-      <Footer generatePassword={ () => { 
-          setPassword(generatePassword(length, ...checked));
-          setStrength(checkPasswordStrength(password));
+      <Footer generatePassword={ () => {
+          const nextPassword = generatePassword(length, ...checked);
+          setPassword(nextPassword);
+          setStrength(checkPasswordStrength(nextPassword));
       }} />
     </Card>
   )

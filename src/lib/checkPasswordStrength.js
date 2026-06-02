@@ -14,7 +14,7 @@ function checkPasswordStrength(password) {
     if (password.length >= 20) score++;
 
     // Check for containing both lowercase and uppercase letters
-    if (/[a-z]/.test(password) || /[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++;
 
     // Check for at least one number
     if (/\d/.test(password)) score++;
@@ -33,7 +33,7 @@ function checkPasswordStrength(password) {
 
     return {
         score,
-        label: labels[score],
+        label: labels[Math.min(Math.max(score - 1, 0), labels.length - 1)],
     };
 }
 
