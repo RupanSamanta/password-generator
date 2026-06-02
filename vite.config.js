@@ -14,5 +14,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "./password-generator/"
+  base: "/password-generator/"
 })

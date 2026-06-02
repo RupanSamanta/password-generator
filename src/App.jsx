@@ -12,25 +12,29 @@ function App() {
   const [checked, setChecked] = useState([true, true, true, true]);
   const [password, setPassword] = useState("");
   const [strength, setStrength] = useState({ score: 0, label: "Empty" });
+  const [disabledButton, setDisabledButton] = useState(false);
+
   return (
     <Card size="sm" className="w-full max-w-sm mx-auto dark">
       <CardHeader className="mt-2">
         <div className="text-lg">Password Generator</div>
       </CardHeader>
       <CardContent className="flex justify-between gap-4 mx-2 my-3 px-0">
-        <Display password={password} />
+        <Display password={password} setDisabledButton={setDisabledButton} />
       </CardContent>
       <CardContent className="settings bg-card m-2">
         <Settings length={length} setLength={setLength} checked={checked} setChecked={setChecked} />
       </CardContent>
       <CardContent className="mx-2 my-3 mt-0">
-        <Strength strength={strength}/>
+        <Strength strength={strength} />
       </CardContent>
-      <Footer generatePassword={ () => {
-          const nextPassword = generatePassword(length, ...checked);
-          setPassword(nextPassword);
-          setStrength(checkPasswordStrength(nextPassword));
-      }} />
+      <Footer generatePassword={() => {
+        const nextPassword = generatePassword(length, ...checked);
+        setPassword(nextPassword);
+        setStrength(checkPasswordStrength(nextPassword));
+      }} 
+          disabled={disabledButton}
+      />
     </Card>
   )
 }

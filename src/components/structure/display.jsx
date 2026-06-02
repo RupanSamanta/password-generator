@@ -4,10 +4,11 @@ import { CopyIcon, Check, AlertCircle } from "lucide-react"
 import { useState } from "react"
 import Feedback from "./feedback"
 
-function Display({ password }) {
+function Display({ password, setDisabledButton }) {
     const [status, setStatus] = useState("idle")
 
     const copyToClipboard = () => {
+        setDisabledButton(true);
         navigator.clipboard.writeText(password)
             .then(() => {
                 setStatus("success");
@@ -18,7 +19,8 @@ function Display({ password }) {
             .finally(() => {
                 setTimeout(() => {
                     setStatus("idle");
-                }, 1750)
+                    setDisabledButton(false);
+                }, 3000)
             })
     }
 

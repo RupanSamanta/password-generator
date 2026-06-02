@@ -177,9 +177,8 @@ body {
     transform: scale(0);
   }
 
-  15%,
-  50%,
-  85% {
+  10%,
+  90% {
     transform: scale(1);
   }
 
@@ -189,7 +188,7 @@ body {
 }
 
 .grow-in-out {
-  animation: grow-in-out 1750ms ease-in-out both;
+  animation: grow-in-out 3000ms ease-in-out both;
   transform-origin: center;
 }
 
