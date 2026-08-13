@@ -2,7 +2,7 @@
 
 A small React + Vite app that generates secure, customizable passwords in the browser.
 
-This repository is a minimal frontend project built with Vite and React. It includes a simple UI to choose password length and character sets, and produces a copyable, strong password instantly.
+This repository is a minimal frontend project built with Vite and React. It includes a simple UI to choose the password length and character set, and instantly produces a copyable, strong password.
 
 ## Features
 
@@ -24,7 +24,7 @@ Install dependencies:
 npm install
 ```
 
-Start development server with hot reload:
+Start the development server with hot reload:
 
 ```
 npm run dev
@@ -67,11 +67,3 @@ If you want to find the password logic, see `src/lib/utils.js`.
 ## Contributing
 
 Contributions are welcome. Open an issue or a pull request describing your change.
-
-## License
-
-This project is provided under the MIT License. See the `LICENSE` file if present.
-
----
-
-If you'd like, I can also add a short example of the password generation algorithm or update `package.json` scripts — tell me which next step you'd prefer.
